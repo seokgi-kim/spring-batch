@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: mysql
+
+  batch:
+    job:
+      names: ${job.name:NONE}
+
+---
+spring:
+  profiles: local
+  datasource:
+    hikari:
+      jdbc-url: dbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+---
+spring:
+  profiles: mysql
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://msjang.cfwwuoacv4d1.us-east-2.rds.amazonaws.com:3306/sgkim
+      username: admin
+      password: class101
+      driver-class-name: com.mysql.jdbc.Driver
